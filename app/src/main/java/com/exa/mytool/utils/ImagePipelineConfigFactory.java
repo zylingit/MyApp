@@ -1,0 +1,106 @@
+package com.aam.mida.mida_yk.utils;
+
+import android.content.Context;
+import android.os.Build;
+import android.os.Environment;
+import android.util.Log;
+
+import com.facebook.cache.disk.DiskCacheConfig;
+import com.facebook.common.internal.Supplier;
+import com.facebook.common.util.ByteConstants;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.cache.MemoryCacheParams;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+
+/**
+ * date:2018/1/17 11:43
+ * introduction:
+ */
+
+public class ImagePipelineConfigFactory {
+    private static final String IMAGE_PIPELINE_CACHE_DIR = "imagepipeline_cache";
+
+    private static ImagePipelineConfig sImagePipelineConfig;
+
+
+    private static final int MAX_HEAP_SIZE = (int) Runtime.getRuntime().maxMemory();
+
+    public static final int MAX_DISK_CACHE_SIZE = 300 * ByteConstants.MB;
+//    public static final int MAX_MEMORY_CACHE_SIZE = MAX_HEAP_SIZE / 16;
+
+    public static final int MAX_MEMORY_CACHE_SIZE = MAX_HEAP_SIZE / 8;
+//    public static final int MAX_MEMORY_CACHE_SIZE = 10 * ByteConstants.MB;
+//    public static final int MAX_MEMORY_CACHE_SIZE = MAX_HEAP_SIZE / 12;
+
+    public static OkHttpClient mOkHttpClient = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .cookieJar(new FrescoCookieJar())
+            .build();
+
+    /**
+     * Creates config using android http stack as network backend.
+     */
+    public static ImagePipelineConfig getImagePipelineConfig(Context context) {
+        if (sImagePipelineConfig == null) {
+            //            ImagePipelineConfig.Builder configBuilder = ImagePipelineConfig.newBuilder(context);
+            ImagePipelineConfig.Builder configBuilder = OkHttpImagePipelineConfigFactory.newBuilder(context, mOkHttpClient);
+            configureCaches(configBuilder, context);
+            sImagePipelineConfig = configBuilder.build();
+        }
+        return sImagePipelineConfig;
+    }
+
+
+    /**
+     * Configures disk and memory cache not to exceed common limits
+     */
+    private static void configureCaches(ImagePipelineConfig.Builder configBuilder, Context context) {
+        final MemoryCacheParams bitmapCacheParams = new MemoryCacheParams(
+                MAX_MEMORY_CACHE_SIZE, // Max total size of elements in the cache
+                Integer.MAX_VALUE,                     // Max entries in the cache
+                MAX_MEMORY_CACHE_SIZE, // Max total size of elements in eviction queue
+                Integer.MAX_VALUE,                     // Max length of eviction queue
+                Integer.MAX_VALUE);                    // Max cache entry size
+        configBuilder
+                .setDownsampleEnabled(true)
+                .setBitmapMemoryCacheParamsSupplier(
+                        new Supplier<MemoryCacheParams>() {
+                            public MemoryCacheParams get() {
+                                return bitmapCacheParams;
+                            }
+                        })
+                .setMainDiskCacheConfig(DiskCacheConfig.newBuilder(context)
+                        .setBaseDirectoryPath(getExternalCacheDir(context))
+                        .setBaseDirectoryName(IMAGE_PIPELINE_CACHE_DIR)
+                        .setMaxCacheSize(MAX_DISK_CACHE_SIZE)
+                        .build());
+    }
+
+    public static File getExternalCacheDir(final Context context) {
+        if (hasExternalCacheDir())
+            return context.getExternalCacheDir();
+
+        // Before Froyo we need to construct the external cache dir ourselves
+        final String cacheDir = "/Android/data/" + context.getPackageName() + "/cache/";
+        return createFile(Environment.getExternalStorageDirectory().getPath() + cacheDir, "");
+    }
+
+    public static boolean hasExternalCacheDir() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO;
+    }
+
+    public static File createFile(String folderPath, String fileName) {
+        File destDir = new File(folderPath);
+        if (!destDir.exists()) {
+            destDir.mkdirs();
+        }
+        return new File(folderPath, fileName);
+    }
+
+}

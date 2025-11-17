@@ -1,8 +1,7 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.KeyEvent
 
 /**

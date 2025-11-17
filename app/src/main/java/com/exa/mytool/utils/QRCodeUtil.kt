@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -11,10 +11,6 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import java.util.*
-import com.google.zxing.MultiFormatWriter
-
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
-import java.lang.Exception
 
 
 object QRCodeUtil {

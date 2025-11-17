@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.media.AudioManager
 import android.media.SoundPool
-import android.util.Log
 import com.aam.loglibs.LogUtils
 import com.aam.mida.mida_yk.R
 import com.aam.mida.mida_yk.YKApplication

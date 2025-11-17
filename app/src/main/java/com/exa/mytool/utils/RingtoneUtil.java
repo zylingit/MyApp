@@ -1,12 +1,8 @@
-package com.aam.mida.mida_yk.utils;
+package com.exa.mytool.utils;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
-import android.media.RingtoneManager;
-import android.net.Uri;
-
-import java.io.IOException;
 
 /**
  * Created by hy on 2017/12/14.

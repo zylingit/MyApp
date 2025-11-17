@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import com.aam.beike_nas_mgr.net.ApiFactory
 import okhttp3.Request

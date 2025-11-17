@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils;
+package com.exa.mytool.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,6 @@ import android.util.Log;
 
 import com.aam.mida.mida_yk.R;
 import com.aam.mida.mida_yk.YKApplication;
-import com.qiniu.android.utils.LogUtil;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils;
+package com.exa.mytool.utils;
 
 import android.content.Context;
 import android.view.View;
@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.view.ContextThemeWrapper;
-import androidx.asynclayoutinflater.view.AsyncLayoutInflater;
+
+import com.aam.mida.mida_yk.utils.PreInflateHelper;
 
 public class DefaultLayoutInflater implements PreInflateHelper.ILayoutInflater {
 

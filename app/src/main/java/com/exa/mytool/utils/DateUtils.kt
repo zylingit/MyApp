@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import java.text.ParseException
 import java.text.SimpleDateFormat

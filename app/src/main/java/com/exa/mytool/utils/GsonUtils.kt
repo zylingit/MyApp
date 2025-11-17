@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import android.text.TextUtils
 import com.google.gson.GsonBuilder

@@ -1,10 +1,10 @@
-package com.aam.mida.mida_yk.utils;
+package com.exa.mytool.utils;
 
 import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
-import android.util.Log;
 
+import com.aam.mida.mida_yk.utils.FrescoCookieJar;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.internal.Supplier;
 import com.facebook.common.util.ByteConstants;

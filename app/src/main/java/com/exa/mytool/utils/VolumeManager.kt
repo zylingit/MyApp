@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import com.aam.loglibs.LogUtils
 import com.aam.mida.base.GlobalVariable
@@ -6,6 +6,10 @@ import com.aam.mida.base.utils.SPUtils
 import com.aam.mida.mida_yk.YKApplication
 import com.aam.mida.mida_yk.entity.VolumeGroup
 import com.aam.soundsetting.ProductType
+import com.exa.mytool.utils.VolumeManager.SCENE_APP
+import com.exa.mytool.utils.VolumeManager.SCENE_STANDBY
+import com.exa.mytool.utils.VolumeManager.VOLUME_TYPE_EFFECTOR
+import com.exa.mytool.utils.VolumeManager.VOLUME_TYPE_MIC
 
 object VolumeManager {
 

@@ -1,9 +1,8 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import android.util.Log
 import com.aam.loglibs.LogUtils
 import com.aam.mida.base.GlobalVariable
-import com.aam.mida.base.utils.TimeTampUtils
 import com.aam.mida.mida_yk.entity.QToken
 import com.aam.mida.mida_yk.net.RetrofitManager
 import com.aam.mida.mida_yk.room.entity.KtvRecordDataEntity

@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

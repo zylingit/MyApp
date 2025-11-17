@@ -1,4 +1,4 @@
-package com.aam.mida.mida_yk.utils
+package com.exa.mytool.utils
 
 import com.aam.loglibs.LogUtils
 import com.aam.mida.base.base.BaseActivity
